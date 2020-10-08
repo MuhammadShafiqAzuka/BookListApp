@@ -24,10 +24,14 @@ class MainActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.book_list_view)
 
+        // i can only pass data from json for title only.
         val recipeList = JSONDataItem.getRecipesFromFile("data.json", this)
         val adapter = BookRecylcerAdapter(this, recipeList)
 
         listView.adapter = adapter
+        listView.isFastScrollEnabled = true
+        adapter.notifyDataSetChanged()
+
         listView.setOnItemClickListener { _, _, position, _ ->
             val selectedBook = recipeList[position]
             showDialog(selectedBook, position)
@@ -47,18 +51,25 @@ class MainActivity : AppCompatActivity() {
         val image = dialog.findViewById(R.id.ivImage) as ImageView
 
         body.text = selectedBook.title
+
+        //i do hardcode (last minute spurt and tried hard.. sorry xentral dev...still learning to derived from drawable png..I will learn more hard right now...)
+        //got some time difficulties for final and assignment for MMU.
         when (position) {
             0 -> {
-                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover1).into(image)
+                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover1)
+                    .into(image)
             }
             1 -> {
-                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover2).into(image)
+                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover2)
+                    .into(image)
             }
             2 -> {
-                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover3).into(image)
+                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover3)
+                    .into(image)
             }
             3 -> {
-                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover4).into(image)
+                Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover4)
+                    .into(image)
             }
             4 -> {
                 Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover3).into(image)

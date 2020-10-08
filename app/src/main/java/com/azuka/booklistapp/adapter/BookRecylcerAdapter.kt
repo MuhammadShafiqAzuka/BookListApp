@@ -62,10 +62,12 @@ class BookRecylcerAdapter(private val context: Context,
                 Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover1).into(thumbnailImageView)
             }
             1 -> {
-                Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover2).into(thumbnailImageView)
+                Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover2)
+                    .into(thumbnailImageView)
             }
             2 -> {
-                Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover3).into(thumbnailImageView)
+                Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover3)
+                    .into(thumbnailImageView)
             }
             3 -> {
                 Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover4).into(thumbnailImageView)
