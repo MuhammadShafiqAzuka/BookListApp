@@ -8,3 +8,6 @@ Pre Test Assessment by a company in Malaysia
 5. The design is for 320px (width) and 480px (height). I choose 480px height because, when I make the research on the internet, and found a combination of 320px width with what height. It showed 480px. ----> completed
 6. All images in the folder you sent me are fully used. ----> completed
 
+
+P/S : I am sorry for adding some value into the JSON file. Not intend to change the objective to the pre test. I just want to add something as plus point. Never intend.
+
