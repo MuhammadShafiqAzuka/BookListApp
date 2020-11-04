@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.book_list_view)
 
         // i can only pass data from json for title only.
-        val recipeList = JSONDataItem.getRecipesFromFile("data.json", this)
+        val recipeList = JSONDataItem.getBookFromFile(this)
         val adapter = BookRecylcerAdapter(this, recipeList)
 
         listView.adapter = adapter
@@ -51,9 +51,6 @@ class MainActivity : AppCompatActivity() {
         val image = dialog.findViewById(R.id.ivImage) as ImageView
 
         body.text = selectedBook.title
-
-        //i do hardcode (last minute spurt and tried hard.. sorry xentral dev...still learning to derived from drawable png..I will learn more hard right now...)
-        //got some time difficulties for final and assignment for MMU.
         when (position) {
             0 -> {
                 Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover1)
@@ -78,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                 Picasso.with(this).load(selectedBook.imageUrl).placeholder(R.drawable.cover4).into(image)
             }
         }
+
         readBtn.setOnClickListener {
             val detailIntent = BookDetails.newIntent(this, selectedBook)
             startActivity(detailIntent)

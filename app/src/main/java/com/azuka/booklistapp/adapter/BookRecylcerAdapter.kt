@@ -34,9 +34,6 @@ class BookRecylcerAdapter(private val context: Context,
 
         // 1
         if (convertView == null) {
-
-
-
             // 2
             view = inflater.inflate(R.layout.book_list, parent, false)
 
@@ -51,12 +48,10 @@ class BookRecylcerAdapter(private val context: Context,
             view = convertView
             holder = convertView.tag as ViewHolder
         }
-
         // 6
         val thumbnailImageView = holder.thumbnailImageView
         val book = getItem(position) as JSONDataItem
 
-        //i do hardcode (last minute spurt and tried hard.. sorry xentral dev...still learning..I will learn more hard right now...)
         when (position) {
             0 -> {
                 Picasso.with(context).load(book.imageUrl).placeholder(R.drawable.cover1).into(thumbnailImageView)

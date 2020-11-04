@@ -1,8 +1,6 @@
 package com.azuka.booklistapp.Remote
 
 import android.content.Context
-import android.content.res.Resources
-import android.graphics.BitmapFactory
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -15,22 +13,16 @@ class JSONDataItem(
 
     companion object {
 
-        fun getRecipesFromFile(filename: String, context: Context): ArrayList<JSONDataItem> {
-            val recipeList = ArrayList<JSONDataItem>()
-            val resources: Resources = context.resources
+        fun getBookFromFile(context: Context): ArrayList<JSONDataItem> {
+            val bookList = ArrayList<JSONDataItem>()
 
             try {
                 // Load data
-                val jsonString = loadJsonFromAsset("data.json", context)
-                val json = JSONObject(jsonString)
+                val filename = loadJsonFromAsset("data.json", context)
+                val json = JSONObject(filename!!)
                 val book = json.getJSONArray("books")
-                val resourceId =
-                resources.getIdentifier(book.toString(), "drawable", context.packageName)
-                //val drawable = resources.getDrawable(resourceId)
-                val bitmap = BitmapFactory.decodeResource(context.resources, resourceId)
-
                 // Get Recipe objects from data
-                (0 until book.length()).mapTo(recipeList) {
+                (0 until book.length()).mapTo(bookList) {
                     JSONDataItem(
                         book.getJSONObject(it).getString("title"),
                         book.getJSONObject(it).getString("image"),
@@ -40,13 +32,11 @@ class JSONDataItem(
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-
-            return recipeList
+            return bookList
         }
 
         private fun loadJsonFromAsset(filename: String, context: Context): String? {
             val json: String?
-
             try {
                 val inputStream = context.assets.open(filename)
                 val size = inputStream.available()
@@ -58,7 +48,6 @@ class JSONDataItem(
                 ex.printStackTrace()
                 return null
             }
-
             return json
         }
     }
